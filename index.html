@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80%;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-close:hover,
+        .modal-close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Gallery</h1>
+        <div class="gallery">
+            <img src="_0ccac421-02ab-4a2f-a4ab-a298ef12c00c.jpg" alt="Image 1" onclick="showModal(this.src)">
+            <img src="_179afe35-48dc-4705-9e18-3178d116feda.jpg" alt="Image 2" onclick="showModal(this.src)">
+            <img src="_1909614f-68b8-4c21-9c4f-a376022aa5b7.jpg" alt="Image 3" onclick="showModal(this.src)">
+            <img src="_1b45e726-4f0f-4b79-9242-2afcfaf5b7cb.jpg" alt="Image 4" onclick="showModal(this.src)">
+            <img src="_3360c687-5788-4deb-9951-3f51a6fcdf8d.jpg" alt="Image 5" onclick="showModal(this.src)">
+            <img src="_36fd6404-4ada-42a6-8778-c417e9786bcc.jpg" alt="Image 6" onclick="showModal(this.src)">
+            <img src="_48f47ca6-741d-48a2-ab9f-b25b4ce2af37.jpg" alt="Image 7" onclick="showModal(this.src)">
+            <img src="_4d30a0a1-aa17-4746-9753-06fadd4e952f.jpg" alt="Image 8" onclick="showModal(this.src)">
+            <img src="_519c8146-a0a7-4fa9-b1a0-63824e02d3a1.jpg" alt="Image 9" onclick="showModal(this.src)">
+            <img src="_51fc7023-f565-4d72-ad7d-f0e5bee86d5a.jpg" alt="Image 10" onclick="showModal(this.src)">
+            <img src="_53d748d3-d619-4644-943c-74d6d64dc317.jpg" alt="Image 11" onclick="showModal(this.src)">
+            <img src="_59c94e48-a8d3-449d-87b6-48b3a23ab840.jpg" alt="Image 12" onclick="showModal(this.src)">
+            <img src="_602f71f5-3b30-4882-809e-80ffe17ee13e.jpg" alt="Image 13" onclick="showModal(this.src)">
+            <img src="_62349794-1197-41f4-98fe-fe931f42370e.jpg" alt="Image 14" onclick="showModal(this.src)">
+            <img src="_72c026d4-f6bd-4b32-90a3-c4c353c4cfb2.jpg" alt="Image 15" onclick="showModal(this.src)">
+            <img src="_78eb7663-c2e5-4eea-b366-0f64ddbec2b8.jpg" alt="Image 16" onclick="showModal(this.src)">
+            <img src="_82bcd8ed-866e-4802-a9c7-dd6403c2b769.jpg" alt="Image 17" onclick="showModal(this.src)">
+            <img src="_9b6dab83-908c-421a-915b-0dec92da6c0b.jpg" alt="Image 18" onclick="showModal(this.src)">
+            <img src="_a81315d4-1dd2-4c57-97d5-4345198e8b96.jpg" alt="Image 19" onclick="showModal(this.src)">
+            <img src="_ae3ebd21-ec4a-4778-9ed2-8ba41854baee.jpg" alt="Image 20" onclick="showModal(this.src)">
+            <img src="_b28319ce-4216-4235-ba66-8f52babaaf3c.jpg" alt="Image 21" onclick="showModal(this.src)">
+            <img src="_b67282b2-b6d2-477c-b2f2-70dcb278c3c1.jpg" alt="Image 22" onclick="showModal(this.src)">
+            <img src="_b7f6245c-a854-4d20-a423-cb10e3742cc3.jpg" alt="Image 23" onclick="showModal(this.src)">
+            <img src="_cb712248-89ea-49b1-9702-e27dc533e58c.jpg" alt="Image 24" onclick="showModal(this.src)">
+            <img src="_cf6b20cf-a5fd-41a1-80e7-5edffaa3f9d3.jpg" alt="Image 25" onclick="showModal(this.src)">
+            <img src="_d546c170-0921-4382-8fe9-c3ddf361d874.jpg" alt="Image 26" onclick="showModal(this.src)">
+            <img src="_dcbd1eec-a229-4e43-8725-4f9a45cceb67.jpg" alt="Image 27" onclick="showModal(this.src)">
+            <img src="_dda76d29-55e5-49d8-a6cf-5747729bbb27.jpg" alt="Image 28" onclick="showModal(this.src)">
+            <img src="_e4d76174-fb3a-40ef-a5b1-c290c97900f6.jpg" alt="Image 29" onclick="showModal(this.src)">
+            <img src="_ea98c9ad-b2c2-4e25-8cdc-dee6662ae891.jpg" alt="Image 30" onclick="showModal(this.src)">
+            <img src="_ebe362b8-2f57-4687-8681-1890b25e7977.jpg" alt="Image 31" onclick="showModal(this.src)">
+            <img src="_f18f86e6-3df4-4267-bd51-f2e060f03269.jpg" alt="Image 32" onclick="showModal(this.src)">
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+        function showModal(src) {
+            const modal = document.getElementById('myModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
