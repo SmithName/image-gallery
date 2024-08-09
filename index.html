@@ -77,7 +77,7 @@
 <body>
     <div class="container">
         <h1>Image Gallery</h1>
-        <div class="gallery">
+         <div class="gallery">
             <img src="_0ccac421-02ab-4a2f-a4ab-a298ef12c00c.jpg" alt="Image 1" onclick="showModal(this.src)">
             <img src="_179afe35-48dc-4705-9e18-3178d116feda.jpg" alt="Image 2" onclick="showModal(this.src)">
             <img src="_1909614f-68b8-4c21-9c4f-a376022aa5b7.jpg" alt="Image 3" onclick="showModal(this.src)">
@@ -113,51 +113,56 @@
         </div>
     </div>
 
-  
-  <script>
-    function showModal(src) {
-        const modal = document.getElementById('myModal');
-        const modalImg = document.getElementById('modalImg');
-        modal.style.display = 'flex';
-        modalImg.src = src;
-    }
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
 
-    function closeModal() {
-        const modal = document.getElementById('myModal');
-        modal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        if (event.target === document.getElementById('myModal')) {
-            closeModal();
+    <script>
+        function showModal(src) {
+            const modal = document.getElementById('myModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = 'flex';
+            modalImg.src = src;
         }
-    }
 
-    // Check for mobile devices more reliably
-    function isMobileDevice() {
-        // Check viewport width and user agent
-        return window.matchMedia("only screen and (max-width: 768px)").matches ||
-               /Mobi|Android/i.test(navigator.userAgent);
-    }
-
-    // Attach or detach onclick event based on device type
-    document.addEventListener('DOMContentLoaded', () => {
-        const galleryImages = document.querySelectorAll('.gallery-img');
-        if (isMobileDevice()) {
-            // On mobile devices, disable onclick event
-            galleryImages.forEach(img => {
-                img.onclick = null;
-            });
-        } else {
-            // On non-mobile devices, enable onclick event
-            galleryImages.forEach(img => {
-                img.onclick = function() {
-                    showModal(this.src);
-                }
-            });
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
         }
-    });
-</script>
 
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+
+        // Check for mobile devices more reliably
+        function isMobileDevice() {
+            return window.matchMedia("only screen and (max-width: 768px)").matches ||
+                   /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+        // Attach or detach onclick event based on device type
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryImages = document.querySelectorAll('.gallery-img');
+            if (isMobileDevice()) {
+                // On mobile devices, disable onclick event
+                galleryImages.forEach(img => {
+                    img.onclick = null;
+                });
+            } else {
+                // On non-mobile devices, enable onclick event
+                galleryImages.forEach(img => {
+                    img.onclick = function() {
+                        showModal(this.src);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
+
+
