@@ -33,6 +33,11 @@
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
+        @media (max-width: 768px) {
+            .gallery img {
+                cursor: default; /* Change cursor to default on mobile devices */
+            }
+        }
         .modal {
             display: none;
             position: fixed;
@@ -108,6 +113,7 @@
         </div>
     </div>
 
+  
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -131,6 +137,21 @@
             if (event.target === document.getElementById('myModal')) {
                 closeModal();
             }
+        }
+
+        // Disable onclick event for mobile devices
+        const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
+        if (!isMobile) {
+            document.querySelectorAll('.gallery-img').forEach(img => {
+                img.onclick = function() {
+                    showModal(this.src);
+                }
+            });
+        } else {
+            // Ensure that no onclick event is attached on mobile
+            document.querySelectorAll('.gallery-img').forEach(img => {
+                img.onclick = null;
+            });
         }
     </script>
 </body>
